@@ -142,9 +142,27 @@
         <div class="song-info">
             <div id="currentSong">No song selected</div>
         </div>
-        <button class="control-button" id="prevButton">⏮️</button>
-        <button class="control-button" id="playPauseButton">▶️</button>
-        <button class="control-button" id="nextButton">⏭️</button>
+        <button class="control-button" id="prevButton">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 20L9 12L19 4V20Z"></path>
+                <path d="M5 19V5"></path>
+            </svg>
+        </button>
+        <button class="control-button" id="playPauseButton">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="playIcon">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="pauseIcon" style="display: none;">
+                <line x1="6" y1="4" x2="6" y2="20"></line>
+                <line x1="18" y1="4" x2="18" y2="20"></line>
+            </svg>
+        </button>
+        <button class="control-button" id="nextButton">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 4L15 12L5 20V4Z"></path>
+                <path d="M19 5V19"></path>
+            </svg>
+        </button>
         <div class="progress-container" id="progressContainer">
             <div class="progress-bar" id="progressBar"></div>
         </div>
@@ -188,9 +206,20 @@
             const currentSongDisplay = document.getElementById('currentSong');
 
             let currentDay = null;
-
+            // Get today's date
+            const today = new Date();
+            const currentDate = today.getDate();
+            
             function updatePlayPauseButton() {
-                playPauseButton.textContent = audio.paused ? '▶️' : '⏸️';
+                const playIcon = playPauseButton.querySelector('#playIcon');
+                const pauseIcon = playPauseButton.querySelector('#pauseIcon');
+                if (audio.paused) {
+                    playIcon.style.display = 'block';
+                    pauseIcon.style.display = 'none';
+                } else {
+                    playIcon.style.display = 'none';
+                    pauseIcon.style.display = 'block';
+                }
             }
 
             function updateProgress() {
@@ -216,11 +245,19 @@
             }
 
             playPauseButton.addEventListener('click', () => {
-                if (currentDay === null) return;
-                if (audio.paused) {
-                    audio.play();
+                if (currentDay === null) {
+                    // If no song is selected, play today's song
+                    if (currentDate <= 24) {
+                        playSong(currentDate);
+                    } else {
+                        playSong(24); // Play last day's song if after December 24
+                    }
                 } else {
-                    audio.pause();
+                    if (audio.paused) {
+                        audio.play();
+                    } else {
+                        audio.pause();
+                    }
                 }
                 updatePlayPauseButton();
             });
@@ -261,7 +298,7 @@
                 
                 const img = document.createElement('img');
                 img.src = `image/${i}.png`;
-                img.alt = `${songs[i]["artist"]} - ${songs[i]["title"]}`;
+                img.alt = `${i}: ${songs[i]["artist"]} - ${songs[i]["title"]}`;
                 
                 dayBox.appendChild(img);
                 dayBox.appendChild(dayNumber);
