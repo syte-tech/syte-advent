@@ -1,0 +1,58 @@
+[Intro]
+CPU, GPU, API, we code it up, we aim sky-high.
+HTTP, FTP, IoT, tech team’s here, that’s our ID.
+
+[Verse 1]
+We roll with AI, ML, NLP,
+Debugging through the night, writing clean MVP.
+CI/CD, deploy on the fly,
+From SQL to JSON, watch the data comply.
+
+JS, HTML, CSS flow,
+In the stack with Docker, we make it glow.
+VR, AR, XR in sight,
+The tech team’s got the vision, future’s looking bright.
+
+[Chorus]
+We’re the MVP of the IT scene,
+From APIs to UX, we keep it clean.
+With SaaS, PaaS, and a bit of DevOps,
+Tech team’s on top, never gonna stop!
+
+[Verse 2]
+KPI, OKR, goals aligned,
+With Scrum and Kanban, we optimize time.
+RESTful APIs connect the dots,
+Cloud-native apps, we’re scaling a lot.
+
+From AWS to Azure, we orchestrate,
+Kubernetes clusters keep the workflows straight.
+Big data pipelines with Spark and Kafka,
+Making magic happen, hakuna matata!
+
+[Chorus]
+We’re the MVP of the IT scene,
+From APIs to UX, we keep it clean.
+With SaaS, PaaS, and a bit of DevOps,
+Tech team’s on top, never gonna stop!
+
+[Bridge]
+Bit by bit, byte by byte,
+From IoT to Blockchain, we ignite.
+HTTP or HTTPS,
+Encryption’s our mantra, we secure success.
+
+UI, UX, make the users smile,
+With every commit, we’re worth the while.
+QA, UAT, green lights flash,
+The tech team delivers, dash by dash!
+
+[Outro]
+AI, ML, and the IoT,
+We’re building the future, just wait and see.
+Tech runs the world, and that’s no lie,
+With the team at Syte, we touch the sky.
+
+[Fade Out]
+CPU, GPU, API…
+Tech dreams soaring high.

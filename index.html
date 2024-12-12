@@ -292,13 +292,17 @@
                 progressBar.style.width = `${progress}%`;
             }
 
-            function updateLyrics(day) {
+            async function updateLyrics(day) {
                 const lyricsContent = document.getElementById('lyricsContent');
-                const song = songs[day];
-                
-                if (song && song.lyrics) {
-                    lyricsContent.textContent = song.lyrics || "No lyrics available for this song";
-                } else {
+                try {
+                    const response = await fetch(`lyrics/${day}.txt`);
+                    if (!response.ok) {
+                        throw new Error('Lyrics not found');
+                    }
+                    const text = await response.text();
+                    lyricsContent.textContent = text || "No lyrics available for this song";
+                } catch (error) {
+                    console.error('Error loading lyrics:', error);
                     lyricsContent.textContent = "No lyrics available for this song";
                 }
             }
@@ -312,12 +316,13 @@
                 }
             }
 
-            function playSong(day) {
+            async function playSong(day) {
                 currentDay = day;
                 audio.src = `music/${day}.mp3`;
                 audio.play();
                 updatePlayPauseButton();
                 updateSongInfo();
+                await updateLyrics(day);
             }
 
             playPauseButton.addEventListener('click', () => {
@@ -385,8 +390,8 @@
                 dayBox.appendChild(img);
                 dayBox.appendChild(dayNumber);
                 
-                dayBox.addEventListener('click', () => {
-                    playSong(i);
+                dayBox.addEventListener('click', async () => {
+                    await playSong(i);
                 });
                 
                 calendar.appendChild(dayBox);
