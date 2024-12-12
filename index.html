@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advent Calendar</title>
+    <style>
+        body {
+            background-color: #111111;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        .calendar-container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+        }
+        
+        .day-box {
+            aspect-ratio: 1;
+            background-color: #2a2a2a;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            transition: all 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .day-box:hover {
+            transform: scale(1.02);
+            background-color: #333333;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.3);
+        }
+
+        .day-box::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 30%;
+            background: linear-gradient(
+                to bottom,
+                transparent,
+                rgba(255, 85, 0, 0.2)
+            );
+        }
+
+        .day-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+            filter: brightness(0.8);
+        }
+
+        .day-box:hover img {
+            filter: brightness(1);
+        }
+
+        .day-number {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 16px;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="calendar-container" id="calendar"></div>
+
+    <audio id="christmasSong" src="9 syte hilft dir bei der Planung.mp3"></audio>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const songs = {
+                "1": {artist: "API Polizei", title: "" },
+                "2": {artist: "David and Matthias", title: ""},
+                "3": {artist: "CRM Warriors", title: "CRM is my Life"},
+                "4": {artist: "Tech4", title: "CPU, GPU, API"},
+                "5": {artist: "", title: "El Rithmo del Marketing"},
+                "6": {artist: "", title: ""},
+                "7": {artist: "", title: ""},
+                "8": {artist: "", title: ""},
+                "9": {artist: "", title: "syte hilft dir bei der Planung"},
+                "10": {artist: "DJ Malahorny", title: "Partypotenzial in der Schinkenstraße"},
+                "11": {artist: "Modernisierung", title: "Rock the syte tonight"},
+                "12": {artist: "Nick Class y Domingo", title: "Cha Cha Cha Fitness"},
+                "13": {artist: "", title: ""},
+                "14": {artist: "", title: ""},
+                "15": {artist: "", title: ""},
+                "16": {artist: "", title: "Bavaria 2.0"},
+                "17": {artist: "", title: ""},
+                "18": {artist: "", title: ""},
+                "19": {artist: "", title: ""},
+                "20": {artist: "", title: ""},
+                "21": {artist: "", title: ""},
+                "22": {artist: "", title: ""},
+                "23": {artist: "", title: ""},
+                "24": {artist: "", title: ""}
+            }
+            const calendar = document.getElementById('calendar');
+            const audio = document.getElementById('christmasSong');
+            
+            // Create 24 day boxes
+            for (let i = 1; i <= 24; i++) {
+                const dayBox = document.createElement('div');
+                dayBox.className = 'day-box';
+                
+                const dayNumber = document.createElement('div');
+                dayNumber.className = 'day-number';
+                dayNumber.textContent = i;
+                
+                const img = document.createElement('img');
+                img.src = `image/${i}.png`;
+                img.alt = `${songs[i]["artist"]} - ${songs[i]["title"]}`;
+                
+                dayBox.appendChild(img);
+                dayBox.appendChild(dayNumber);
+                
+                dayBox.addEventListener('click', () => {
+                    audio.src = `music/${i}.mp3`;
+                    if (audio.paused) {
+                        audio.play();
+                    } else {
+                        audio.pause();
+                        audio.currentTime = 0;
+                    }
+                });
+                
+                calendar.appendChild(dayBox);
+            }
+        });
+    </script>
+</body>
+</html>
