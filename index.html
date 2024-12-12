@@ -81,12 +81,74 @@
             font-size: 16px;
             z-index: 1;
         }
+
+        .audio-controls {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #1a1a1a;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+
+        .control-button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: background-color 0.2s;
+        }
+
+        .control-button:hover {
+            background-color: #333333;
+        }
+
+        .progress-container {
+            flex-grow: 1;
+            height: 4px;
+            background-color: #333333;
+            border-radius: 2px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: #ff5500;
+            border-radius: 2px;
+            width: 0%;
+        }
+
+        .song-info {
+            min-width: 200px;
+            color: #ffffff;
+            font-size: 14px;
+        }
     </style>
 </head>
 <body>
     <div class="calendar-container" id="calendar"></div>
 
-    <audio id="christmasSong" src="9 syte hilft dir bei der Planung.mp3"></audio>
+    <audio id="christmasSong" src=""></audio>
+
+    <div class="audio-controls">
+        <div class="song-info">
+            <div id="currentSong">No song selected</div>
+        </div>
+        <button class="control-button" id="prevButton">⏮️</button>
+        <button class="control-button" id="playPauseButton">▶️</button>
+        <button class="control-button" id="nextButton">⏭️</button>
+        <div class="progress-container" id="progressContainer">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -118,7 +180,76 @@
             }
             const calendar = document.getElementById('calendar');
             const audio = document.getElementById('christmasSong');
-            
+            const playPauseButton = document.getElementById('playPauseButton');
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+            const progressContainer = document.getElementById('progressContainer');
+            const progressBar = document.getElementById('progressBar');
+            const currentSongDisplay = document.getElementById('currentSong');
+
+            let currentDay = null;
+
+            function updatePlayPauseButton() {
+                playPauseButton.textContent = audio.paused ? '▶️' : '⏸️';
+            }
+
+            function updateProgress() {
+                const progress = (audio.currentTime / audio.duration) * 100;
+                progressBar.style.width = `${progress}%`;
+            }
+
+            function updateSongInfo() {
+                if (currentDay) {
+                    const song = songs[currentDay];
+                    currentSongDisplay.textContent = `${song.artist} - ${song.title}`;
+                } else {
+                    currentSongDisplay.textContent = 'No song selected';
+                }
+            }
+
+            function playSong(day) {
+                currentDay = day;
+                audio.src = `music/${day}.mp3`;
+                audio.play();
+                updatePlayPauseButton();
+                updateSongInfo();
+            }
+
+            playPauseButton.addEventListener('click', () => {
+                if (currentDay === null) return;
+                if (audio.paused) {
+                    audio.play();
+                } else {
+                    audio.pause();
+                }
+                updatePlayPauseButton();
+            });
+
+            prevButton.addEventListener('click', () => {
+                if (currentDay > 1) {
+                    playSong(currentDay - 1);
+                }
+            });
+
+            nextButton.addEventListener('click', () => {
+                if (currentDay < 24) {
+                    playSong(currentDay + 1);
+                }
+            });
+
+            progressContainer.addEventListener('click', (e) => {
+                const rect = progressContainer.getBoundingClientRect();
+                const ratio = (e.clientX - rect.left) / rect.width;
+                audio.currentTime = ratio * audio.duration;
+            });
+
+            audio.addEventListener('timeupdate', updateProgress);
+            audio.addEventListener('ended', () => {
+                if (currentDay < 24) {
+                    playSong(currentDay + 1);
+                }
+            });
+
             // Create 24 day boxes
             for (let i = 1; i <= 24; i++) {
                 const dayBox = document.createElement('div');
@@ -136,13 +267,7 @@
                 dayBox.appendChild(dayNumber);
                 
                 dayBox.addEventListener('click', () => {
-                    audio.src = `music/${i}.mp3`;
-                    if (audio.paused) {
-                        audio.play();
-                    } else {
-                        audio.pause();
-                        audio.currentTime = 0;
-                    }
+                    playSong(i);
                 });
                 
                 calendar.appendChild(dayBox);
