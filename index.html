@@ -165,10 +165,54 @@
             color: #ffffff;
             font-size: 14px;
         }
+
+        .page-container {
+            display: flex;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1600px;
+            margin: 0 auto;
+        }
+
+        .lyrics-panel {
+            width: 300px;
+            background-color: #1a1a1a;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .lyrics-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #ff5500;
+        }
+
+        .lyrics-content {
+            font-size: 14px;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
+
+        .calendar-container {
+            flex: 1;
+        }
     </style>
 </head>
 <body>
-    <div class="calendar-container" id="calendar"></div>
+    <div class="page-container">
+        <div class="calendar-container" id="calendar"></div>
+        <div class="lyrics-panel">
+            <div class="lyrics-title">Lyrics</div>
+            <div class="lyrics-content" id="lyricsContent">
+                Select a song to view lyrics
+            </div>
+        </div>
+    </div>
 
     <audio id="christmasSong" src=""></audio>
 
@@ -203,33 +247,20 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const songs = {
-                "1": {artist: "API Polizei", title: "" },
-                "2": {artist: "David and Matthias", title: ""},
-                "3": {artist: "CRM Warriors", title: "CRM is my Life"},
-                "4": {artist: "Tech4", title: "CPU, GPU, API"},
-                "5": {artist: "Las Sytos", title: "El Ritmo del Marketing"},
-                "6": {artist: "", title: ""},
-                "7": {artist: "", title: ""},
-                "8": {artist: "", title: ""},
-                "9": {artist: "Las Paulitas", title: "syte hilft dir bei der Planung"},
-                "10": {artist: "DJ Malahorny", title: "Partypotenzial in der Schinkenstraße"},
-                "11": {artist: "Modernisierung", title: "Rock the syte tonight"},
-                "12": {artist: "Nick Class y Domingo", title: "Cha Cha Cha Fitness"},
-                "13": {artist: "", title: ""},
-                "14": {artist: "", title: ""},
-                "15": {artist: "", title: ""},
-                "16": {artist: "", title: "Bavaria 2.0"},
-                "17": {artist: "", title: ""},
-                "18": {artist: "", title: ""},
-                "19": {artist: "", title: ""},
-                "20": {artist: "", title: ""},
-                "21": {artist: "", title: ""},
-                "22": {artist: "", title: ""},
-                "23": {artist: "", title: ""},
-                "24": {artist: "", title: ""}
+        document.addEventListener('DOMContentLoaded', async () => {
+            // Fetch songs data
+            let songs;
+            try {
+                const response = await fetch('songs.json');
+                if (!response.ok) {
+                    throw new Error('Failed to load songs data');
+                }
+                songs = await response.json();
+            } catch (error) {
+                console.error('Error loading songs:', error);
+                songs = {}; // Fallback to empty object if loading fails
             }
+
             const calendar = document.getElementById('calendar');
             const audio = document.getElementById('christmasSong');
             const playPauseButton = document.getElementById('playPauseButton');
@@ -259,6 +290,17 @@
             function updateProgress() {
                 const progress = (audio.currentTime / audio.duration) * 100;
                 progressBar.style.width = `${progress}%`;
+            }
+
+            function updateLyrics(day) {
+                const lyricsContent = document.getElementById('lyricsContent');
+                const song = songs[day];
+                
+                if (song && song.lyrics) {
+                    lyricsContent.textContent = song.lyrics || "No lyrics available for this song";
+                } else {
+                    lyricsContent.textContent = "No lyrics available for this song";
+                }
             }
 
             function updateSongInfo() {
