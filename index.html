@@ -114,13 +114,92 @@
             50% {
                 opacity: 0.5;
             }
+
+        .audio-controls {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #1a1a1a;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.3);
+            z-index: 1000;
+        }
+
+        .control-button {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            padding: 8px;
+            border-radius: 50%;
+            transition: background-color 0.2s;
+        }
+
+        .control-button:hover {
+            background-color: #333333;
+        }
+
+        .progress-container {
+            flex-grow: 1;
+            height: 4px;
+            background-color: #333333;
+            border-radius: 2px;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background-color: #ff5500;
+            border-radius: 2px;
+            width: 0%;
+        }
+
+        .song-info {
+            min-width: 200px;
+            color: #ffffff;
+            font-size: 14px;
         }
     </style>
 </head>
 <body>
     <div class="calendar-container" id="calendar"></div>
 
-    <audio id="christmasSong" src="9 syte hilft dir bei der Planung.mp3"></audio>
+    <audio id="christmasSong" src=""></audio>
+
+    <div class="audio-controls">
+        <div class="song-info">
+            <div id="currentSong">No song selected</div>
+        </div>
+        <button class="control-button" id="prevButton">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 20L9 12L19 4V20Z"></path>
+                <path d="M5 19V5"></path>
+            </svg>
+        </button>
+        <button class="control-button" id="playPauseButton">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="playIcon">
+                <polygon points="5 3 19 12 5 21 5 3"></polygon>
+            </svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" id="pauseIcon" style="display: none;">
+                <line x1="6" y1="4" x2="6" y2="20"></line>
+                <line x1="18" y1="4" x2="18" y2="20"></line>
+            </svg>
+        </button>
+        <button class="control-button" id="nextButton">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M5 4L15 12L5 20V4Z"></path>
+                <path d="M19 5V19"></path>
+            </svg>
+        </button>
+        <div class="progress-container" id="progressContainer">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
@@ -152,7 +231,95 @@
             }
             const calendar = document.getElementById('calendar');
             const audio = document.getElementById('christmasSong');
+            const playPauseButton = document.getElementById('playPauseButton');
+            const prevButton = document.getElementById('prevButton');
+            const nextButton = document.getElementById('nextButton');
+            const progressContainer = document.getElementById('progressContainer');
+            const progressBar = document.getElementById('progressBar');
+            const currentSongDisplay = document.getElementById('currentSong');
+
+            let currentDay = null;
+            // Get today's date
+            const today = new Date();
+            const currentDate = today.getDate();
             
+            function updatePlayPauseButton() {
+                const playIcon = playPauseButton.querySelector('#playIcon');
+                const pauseIcon = playPauseButton.querySelector('#pauseIcon');
+                if (audio.paused) {
+                    playIcon.style.display = 'block';
+                    pauseIcon.style.display = 'none';
+                } else {
+                    playIcon.style.display = 'none';
+                    pauseIcon.style.display = 'block';
+                }
+            }
+
+            function updateProgress() {
+                const progress = (audio.currentTime / audio.duration) * 100;
+                progressBar.style.width = `${progress}%`;
+            }
+
+            function updateSongInfo() {
+                if (currentDay) {
+                    const song = songs[currentDay];
+                    currentSongDisplay.textContent = `${song.artist} - ${song.title}`;
+                } else {
+                    currentSongDisplay.textContent = 'No song selected';
+                }
+            }
+
+            function playSong(day) {
+                currentDay = day;
+                audio.src = `music/${day}.mp3`;
+                audio.play();
+                updatePlayPauseButton();
+                updateSongInfo();
+            }
+
+            playPauseButton.addEventListener('click', () => {
+                if (currentDay === null) {
+                    // If no song is selected, play today's song
+                    if (currentDate <= 24) {
+                        playSong(currentDate);
+                    } else {
+                        playSong(24); // Play last day's song if after December 24
+                    }
+                } else {
+                    if (audio.paused) {
+                        audio.play();
+                    } else {
+                        audio.pause();
+                    }
+                }
+                updatePlayPauseButton();
+            });
+
+            prevButton.addEventListener('click', () => {
+                if (currentDay > 1) {
+                    playSong(currentDay - 1);
+                }
+            });
+
+            nextButton.addEventListener('click', () => {
+                if (currentDay < 24) {
+                    playSong(currentDay + 1);
+                }
+            });
+
+            progressContainer.addEventListener('click', (e) => {
+                const rect = progressContainer.getBoundingClientRect();
+                const ratio = (e.clientX - rect.left) / rect.width;
+                audio.currentTime = ratio * audio.duration;
+            });
+
+            audio.addEventListener('timeupdate', updateProgress);
+            audio.addEventListener('ended', () => {
+                if (currentDay < 24) {
+                    playSong(currentDay + 1);
+                }
+            });
+
             // Create 24 day boxes
             for (let i = 1; i <= 24; i++) {
                 const dayBox = document.createElement('div');
@@ -170,19 +337,13 @@
                 
                 const img = document.createElement('img');
                 img.src = `image/${i}.png`;
-                img.alt = `${songs[i]["artist"]} - ${songs[i]["title"]}`;
+                img.alt = `${i}: ${songs[i]["artist"]} - ${songs[i]["title"]}`;
                 
                 dayBox.appendChild(img);
                 dayBox.appendChild(dayNumber);
                 
                 dayBox.addEventListener('click', () => {
-                    audio.src = `music/${i}.mp3`;
-                    if (audio.paused) {
-                        audio.play();
-                    } else {
-                        audio.pause();
-                        audio.currentTime = 0;
-                    }
+                    playSong(i);
                 });
                 
                 calendar.appendChild(dayBox);
