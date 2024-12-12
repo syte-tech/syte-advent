@@ -81,6 +81,40 @@
             font-size: 16px;
             z-index: 1;
         }
+
+        .day-box.current-day {
+            border: 2px solid transparent;
+            background-clip: padding-box;
+            animation: borderGlow 2s ease-in-out infinite;
+            position: relative;
+        }
+
+        .day-box.current-day::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(
+                45deg,
+                #ff3d00,
+                #ff9e00,
+                #ff3d00
+            );
+            border-radius: 6px;
+            z-index: -1;
+            animation: borderGlow 2s ease-in-out infinite;
+        }
+
+        @keyframes borderGlow {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
     </style>
 </head>
 <body>
@@ -124,6 +158,12 @@
                 const dayBox = document.createElement('div');
                 dayBox.className = 'day-box';
                 
+                // Add current day indicator
+                const today = new Date();
+                if (today.getMonth() === 11 && today.getDate() === i) { // 11 is December (0-based)
+                    dayBox.classList.add('current-day');
+                }
+
                 const dayNumber = document.createElement('div');
                 dayNumber.className = 'day-number';
                 dayNumber.textContent = i;
