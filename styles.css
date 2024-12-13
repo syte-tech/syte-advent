@@ -252,3 +252,38 @@ body {
 .future-day:hover img {
     filter: brightness(0.5);
 }
+
+.favorite-button {
+    margin-right: 15px;
+}
+
+.favorite-button svg {
+    transition: fill 0.3s, transform 0.3s;
+}
+
+.favorite-button:hover svg {
+    transform: scale(1.1);
+}
+
+.favorite-button.active svg {
+    fill: #ff5500;
+}
+
+.day-box {
+    position: relative;
+}
+
+.favorite-indicator {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    z-index: 1;
+    color: white;
+    opacity: 0.7;
+}
+
+.favorite-indicator svg {
+    width: 20px;
+    height: 20px;
+    fill: #fff;
+}

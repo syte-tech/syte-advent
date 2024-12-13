@@ -91,6 +91,20 @@
             const today = new Date();
             const currentDate = today.getDate();
             
+            // Load favorites from localStorage
+            let favorites = new Set(JSON.parse(localStorage.getItem('favorites') || '[]'));
+
+            // Add the heart button to the audio controls
+            const audioControls = document.querySelector('.audio-controls');
+            const favoriteButton = document.createElement('button');
+            favoriteButton.className = 'control-button favorite-button';
+            favoriteButton.innerHTML = `
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+            `;
+            audioControls.insertBefore(favoriteButton, audioControls.lastElementChild);
+
             function updatePlayPauseButton() {
                 const playIcon = playPauseButton.querySelector('#playIcon');
                 const pauseIcon = playPauseButton.querySelector('#pauseIcon');
@@ -144,19 +158,63 @@
                 }
             }
 
+            function updateFavoriteButton() {
+                if (currentDay) {
+                    favoriteButton.style.display = 'block';
+                    if (favorites.has(currentDay.toString())) {
+                        favoriteButton.classList.add('active');
+                        favoriteButton.querySelector('svg').style.fill = '#ff5500';
+                    } else {
+                        favoriteButton.classList.remove('active');
+                        favoriteButton.querySelector('svg').style.fill = 'none';
+                    }
+                } else {
+                    favoriteButton.style.display = 'none';
+                }
+            }
+
             muteButton.addEventListener('click', () => {
                 audio.muted = !audio.muted;
                 updateMuteButton();
             });
 
+            favoriteButton.addEventListener('click', () => {
+                if (!currentDay) return;
+                
+                const dayStr = currentDay.toString();
+                if (favorites.has(dayStr)) {
+                    favorites.delete(dayStr);
+                    // Remove favorite indicator from current day box
+                    const currentDayBox = document.querySelectorAll('.day-box')[currentDay - 1];
+                    const indicator = currentDayBox.querySelector('.favorite-indicator');
+                    if (indicator) indicator.remove();
+                } else {
+                    favorites.add(dayStr);
+                    // Add favorite indicator to current day box
+                    const currentDayBox = document.querySelectorAll('.day-box')[currentDay - 1];
+                    const favoriteIndicator = document.createElement('div');
+                    favoriteIndicator.className = 'favorite-indicator';
+                    favoriteIndicator.innerHTML = `
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    `;
+                    currentDayBox.appendChild(favoriteIndicator);
+                }
+                
+                localStorage.setItem('favorites', JSON.stringify([...favorites]));
+                updateFavoriteButton();
+            });
+
             async function playSong(day) {
                 currentDay = day;
                 audio.src = `music/${day}.mp3`;
-                audio.muted = false; // Reset mute state
+                audio.muted = false;
                 audio.play();
                 updatePlayPauseButton();
-                updateMuteButton(); // Update mute button state
+                updateMuteButton();
                 updateSongInfo();
+                updateFavoriteButton();
                 await updateLyrics(day);
             }
 
@@ -229,6 +287,18 @@
                 img.onerror = function() {
                     this.src = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3C/svg%3E";
                 };
+                
+                // Add favorite indicator if song is in favorites
+                if (favorites.has(i.toString())) {
+                    const favoriteIndicator = document.createElement('div');
+                    favoriteIndicator.className = 'favorite-indicator';
+                    favoriteIndicator.innerHTML = `
+                        <svg viewBox="0 0 24 24">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                        </svg>
+                    `;
+                    dayBox.appendChild(favoriteIndicator);
+                }
                 
                 dayBox.appendChild(img);
                 dayBox.appendChild(dayNumber);
