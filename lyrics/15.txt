@@ -1,0 +1,43 @@
+[Verse 1]
+Data flows, old and slow, time to break free,
+We’re building pipelines for the future—dbt.
+Transformations blazing, modern and fast,
+Data at warp speed, leave the past.
+
+[Chorus]
+dbt, set the pace, ignite the flow,
+Transform the streams, watch them glow.
+dbt, modern tools, we’re leading the race,
+Warp-speed data, the future’s place.
+
+[Drop]
+(Spacey techno beat with rising synths and heavy bass)
+dbt—warp the speed,
+Transform data, meet the need.
+dbt—fast and clean,
+Data flows like a dream.
+
+[Verse 2]
+SQL models stacking, modular and clear,
+Version-controlled pipelines, the future’s here.
+No more waiting, no more lag,
+Real-time insights, we’re in the bag.
+
+[Chorus]
+dbt, set the pace, ignite the flow,
+Transform the streams, watch them glow.
+dbt, modern tools, we’re leading the race,
+Warp-speed data, the future’s place.
+
+[Bridge]
+Code it once, watch it scale,
+dbt makes pipelines prevail.
+From staging to production, no time to lose,
+Data pipelines we proudly cruise.
+
+[Outro/Drop]
+(High-energy climax, robotic vocal effects)
+dbt—cutting edge, blazing the trail,
+Transform the data, never derail.
+dbt—future’s here, no need to wait,
+Data pipelines, innovate!
