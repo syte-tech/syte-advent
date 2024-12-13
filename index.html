@@ -185,7 +185,7 @@
             });
 
             nextButton.addEventListener('click', () => {
-                if (currentDay < 24) {
+                if (currentDay < 24 && (currentDay + 1) <= currentDate) {  // Check if next day is not in the future
                     playSong(currentDay + 1);
                 }
             });
@@ -198,7 +198,7 @@
 
             audio.addEventListener('timeupdate', updateProgress);
             audio.addEventListener('ended', () => {
-                if (currentDay < 24) {
+                if (currentDay < 24 && (currentDay + 1) <= currentDate) {  // Check if next day is not in the future
                     playSong(currentDay + 1);
                 }
             });
