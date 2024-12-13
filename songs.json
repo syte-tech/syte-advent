@@ -1,26 +1,98 @@
 {
-    "1": {"artist": "API Polizei", "title": "API Polizei", "lyrics": "Test lyrics"},
-    "2": {"artist": "David and Matthias", "title": "David and Matthias", "lyrics": "" },
-    "3": {"artist": "CRM Warriors", "title": "CRM is my Life", "lyrics": ""},
-    "4": {"artist": "Tech4", "title": "CPU, GPU, API", "lyrics": ""},
-    "5": {"artist": "Las Sytos", "title": "El Ritmo del Marketing", "lyrics": ""},
-    "6": {"artist": "Dr. Renovate", "title": "Still Renovatin", "lyrics": ""},
-    "7": {"artist": "Electra Push", "title": "Push Pull Flow", "lyrics": ""},
-    "8": {"artist": "BDSM", "title": "Strategie und Match", "lyrics": ""},
-    "9": {"artist": "Las Paulitas", "title": "syte hilft dir bei der Planung", "lyrics": ""},
-    "10": {"artist": "DJ Malahorny", "title": "Partypotenzial in der Schinkenstraße", "lyrics": ""},
-    "11": {"artist": "Modernisierung Talking", "title": "Rocking syte tonight", "lyrics": ""},
-    "12": {"artist": "Nick Class y Domingo", "title": "Cha Cha Cha Fitness", "lyrics": ""},
-    "13": {"artist": "Swift Search", "title": "Search it off", "lyrics": ""},
-    "14": {"artist": "Paula", "title": "Nie verrechnet", "lyrics": ""},
-    "15": {"artist": "The Data Plumbers", "title": "dbt Warp Speed", "lyrics": ""},
-    "16": {"artist": "Die syte-Buam", "title": "Bayern bie Syte", "lyrics": ""},
-    "17": {"artist": "", "title": "", "lyrics": ""},
-    "18": {"artist": "", "title": "", "lyrics": ""},
-    "19": {"artist": "", "title": "", "lyrics": ""},
-    "20": {"artist": "", "title": "", "lyrics": ""},
-    "21": {"artist": "", "title": "", "lyrics": ""},
-    "22": {"artist": "", "title": "", "lyrics": ""},
-    "23": {"artist": "", "title": "", "lyrics": ""},
-    "24": {"artist": "", "title": "", "lyrics": ""}
-} 
+    "1": {
+        "artist": "API Polizei",
+        "title": "API Polizei"
+    },
+    "2": {
+        "artist": "David and Matthias",
+        "title": "David and Matthias"
+    },
+    "3": {
+        "artist": "CRM Warriors",
+        "title": "CRM is my Life"
+    },
+    "4": {
+        "artist": "Tech4",
+        "title": "CPU, GPU, API"
+    },
+    "5": {
+        "artist": "Las Sytos",
+        "title": "El Ritmo del Marketing"
+    },
+    "6": {
+        "artist": "Dr. Renovate",
+        "title": "Still Renovatin"
+    },
+    "7": {
+        "artist": "Electra Push",
+        "title": "Push Pull Flow"
+    },
+    "8": {
+        "artist": "BDSM",
+        "title": "Strategie und Match"
+    },
+    "9": {
+        "artist": "Las Paulitas",
+        "title": "syte hilft dir bei der Planung"
+    },
+    "10": {
+        "artist": "DJ Malahorny",
+        "title": "Partypotenzial in der Schinkenstraße"
+    },
+    "11": {
+        "artist": "Modernisierung Talking",
+        "title": "Rocking syte tonight"
+    },
+    "12": {
+        "artist": "Nick Class y Domingo",
+        "title": "Cha Cha Cha Fitness"
+    },
+    "13": {
+        "artist": "Swift Search",
+        "title": "Search it off"
+    },
+    "14": {
+        "artist": "Paula",
+        "title": "Nie verrechnet"
+    },
+    "15": {
+        "artist": "The Data Plumbers",
+        "title": "dbt Warp Speed"
+    },
+    "16": {
+        "artist": "Die syte-Buam",
+        "title": "Bayern bie Syte"
+    },
+    "17": {
+        "artist": "",
+        "title": ""
+    },
+    "18": {
+        "artist": "",
+        "title": ""
+    },
+    "19": {
+        "artist": "",
+        "title": ""
+    },
+    "20": {
+        "artist": "",
+        "title": ""
+    },
+    "21": {
+        "artist": "",
+        "title": ""
+    },
+    "22": {
+        "artist": "",
+        "title": ""
+    },
+    "23": {
+        "artist": "",
+        "title": ""
+    },
+    "24": {
+        "artist": "",
+        "title": ""
+    }
+}
