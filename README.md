@@ -1,4 +1,4 @@
-# 🎄 Musical Advent Calendar 🎵
+# 🎄  syte's Musical Advent Calendar 🎵
 
 Ho ho ho! Welcome to the most rockin' advent calendar you've ever seen! This isn't your grandma's chocolate calendar (though we love those too) - it's a digital musical journey through December! 🎸
 
@@ -37,4 +37,24 @@ Ever wished your advent calendar could blast some tunes? Well, now it can! This 
 ## 🎨 File Structure
 
 ```
-advent 
+advent-calendar/
+├── music/ # Your daily tunes (1-24.mp3)
+├── image/ # Daily artwork (1-24.png)
+├── lyrics/ # Song lyrics (1-24.txt)
+├── songs.json # Song metadata
+├── index.html # Main page
+└── styles.css # Makes everything pretty
+```
+
+## 🙏 Acknowledgments
+
+- Thanks to Santa's coding elves (ChatGPT, Suno AI and Cursor) for inspiration
+- Shoutout to all the musicians
+- High five to the open-source community
+- Virtual hugs to everyone who tests and uses this!
+
+---
+
+Made with 🎵 and ❤️ for the holiday season!
+
+Remember: The best way to spread Christmas cheer is singing loud for all to hear! 🎶
