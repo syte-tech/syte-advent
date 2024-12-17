@@ -1,79 +1,98 @@
 {
     "1": {
         "artist": "API Polizei",
-        "title": "API Polizei"
+        "title": "API Polizei",
+        "language": "de"
     },
     "2": {
         "artist": "David and Matthias",
-        "title": "David and Matthias"
+        "title": "David and Matthias",
+        "language": "en"
     },
     "3": {
         "artist": "CRM Warriors",
-        "title": "CRM is my Life"
+        "title": "CRM is my Life",
+        "language": "en"
     },
     "4": {
         "artist": "Tech4",
-        "title": "CPU, GPU, API"
+        "title": "CPU, GPU, API",
+        "language": "de"
     },
     "5": {
         "artist": "Las Sytos",
-        "title": "El Ritmo del Marketing"
+        "title": "El Ritmo del Marketing",
+        "language": "es"
     },
     "6": {
         "artist": "Dr. Renovate",
-        "title": "Still Renovatin"
+        "title": "Still Renovatin",
+        "language": "en"
     },
     "7": {
         "artist": "Electra Push",
-        "title": "Push Pull Flow"
+        "title": "Push Pull Flow",
+        "language": "de"
     },
     "8": {
         "artist": "BDSM",
-        "title": "Strategie und Match"
+        "title": "Strategie und Macht",
+        "language": "de"
     },
     "9": {
         "artist": "Las Paulitas",
-        "title": "syte hilft dir bei der Planung"
+        "title": "syte hilft dir bei der Planung",
+        "language": "de"
     },
     "10": {
         "artist": "DJ Malahorny",
-        "title": "Partypotenzial in der Schinkenstraße"
+        "title": "Partypotenzial in der Schinkenstraße",
+        "language": "de"
     },
     "11": {
         "artist": "Modernisierung Talking",
-        "title": "Rocking syte tonight"
+        "title": "Rocking syte tonight",
+        "language": "en"
     },
     "12": {
         "artist": "Nick Class y Domingo",
-        "title": "Cha Cha Cha Fitness"
+        "title": "Cha Cha Cha Fitness",
+        "language": "es"
     },
     "13": {
         "artist": "Swift Search",
-        "title": "Search it off"
+        "title": "Search it off",
+        "language": "en"
     },
     "14": {
         "artist": "Paula",
-        "title": "Nie verrechnet"
+        "title": "Nie verrechnet",
+        "language": "de"
     },
     "15": {
         "artist": "The Data Plumbers",
-        "title": "dbt Warp Speed"
+        "title": "dbt Warp Speed",
+        "language": "en"
     },
     "16": {
         "artist": "Die syte-Buam",
-        "title": "Bayern bie Syte"
+        "title": "Bayern bie Syte",
+        "language": "de"
     },
     "17": {
         "artist": "sytee",
-        "title": "Mastermind of the web"
+        "title": "Mastermind of the web",
+        "language": "en"
     },
     "18": {
         "artist": "Marius Black",
-        "title": "Get On My Level"
+        "title": "Get On My Level",
+        "language": "de"
     },
     "19": {
         "artist": "Pauli",
-        "title": "Bremer Straße vier zwei"
+        "title": "Bremer Straße vier zwei",
+        "language": "de"
     },
     "20": {
         "artist": "Smooth.Ctrl",

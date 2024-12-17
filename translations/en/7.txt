@@ -1,0 +1,63 @@
+(Hook)
+Pull Request, let's go, I push my feature so,
+Code fits, works, feature flow, everything tight like abs and core,
+Merge ready, showing skills in the repo,
+Push it, Commit it, everything runs in the flow.
+
+(Verse 1)
+I come into the branch, hustling like a star,
+Git status checked, everything clean, all clear.
+Code is stable, no errors, perfect,
+Syntax on point, I'm always correct.
+
+Master locked, but feature can join,
+I push innovation, code like a champ.
+Lines are smooth, no gaps in the game,
+Merge Conflict? Nope, everything's tame.
+
+(Pre-Chorus)
+I push, I pull, I make the code tight,
+Review my flow, approve, it's alright.
+Deploy to main, my style is unique,
+I'm the boss, no bug at the peak.
+
+(Hook)
+Pull Request, let's go, I push my feature so,
+Code fits, works, feature flow, everything tight like abs and core,
+Merge ready, showing skills in the repo,
+Push it, Commit it, everything runs in the flow.
+
+(Verse 2)
+Code Review, team gives me props,
+Comments clean, no need for stops.
+Efficiency high, I push and win,
+Test cases green, I go all-in.
+
+My code is sleek, my workflow a show,
+Continuous Integration, let it glow.
+I'm a star in the dev community,
+With every commit I bring energy.
+
+(Pre-Chorus)
+I push, I pull, I make the code tight,
+Review my flow, approve, it's alright.
+Deploy to main, my style is unique,
+I'm the boss, no bug at the peak.
+
+(Hook)
+Pull Request, let's go, I push my feature so,
+Code fits, works, feature flow, everything tight like abs and core,
+Merge ready, showing skills in the repo,
+Push it, Commit it, everything runs in the flow.
+
+(Bridge)
+Feature Branch, I make it smooth like a pro,
+Pipelines running, CI/CD on the go.
+My devs know, I'm simply great,
+No delay, 'cause I always have fun.
+
+(Outro)
+GitHub Gang, we make the plan,
+Merge, Rebase, push it to the Main now.
+Code polished, smooth like a flow,
+Shirin style, abs and core! 

@@ -287,3 +287,34 @@ body {
     height: 20px;
     fill: #fff;
 }
+
+.lyrics-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.language-selector {
+    display: flex;
+    gap: 5px;
+}
+
+.lang-button {
+    background: none;
+    border: 1px solid #333;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+.lang-button:hover {
+    background: #333;
+}
+
+.lang-button.active {
+    background: #ff5500;
+    border-color: #ff5500;
+}
