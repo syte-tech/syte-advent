@@ -1,0 +1,64 @@
+[Strophe 1]
+Flüstern im Browser,
+Farben malen die Szene,
+Kaskadierend durch Stylesheets,
+Code so klar und rein.
+
+Träume in responsivem Fluss,
+Grid-Linien halten den Rahmen,
+Hover-States mit Hingabe,
+Design, das deinen Namen ruft.
+
+[Pre-Refrain]
+Scrollend, fließend,
+Endlose UX-Träume.
+JavaScript in Bewegung,
+Logik unter dem Screen.
+
+[Refrain]
+Er ist der Pixel-Operator,
+Läuft durch den DOM heute Nacht.
+Ein visueller Navigator,
+Pixel tanzen, oh wie fein.
+
+Von React bis Animation,
+CSS-Liebesaffäre.
+Er ist ein Frontend-Schöpfer,
+Rendert smooth überall.
+
+[Strophe 2]
+Debugging durch die Schatten,
+Console zeigt keine Furcht.
+Variablen in Harmonie,
+Funktionen kristallklar.
+
+Lädt schnell, kein Warten,
+Transitionen leicht wie Luft.
+User-Klicks, berauschend,
+Sein Styling stets apart.
+
+[Pre-Refrain]
+Fließend, glühend,
+Jeder Viewport strahlt.
+Flexbox wie ein Fluss,
+Richtet Herzen und Linien aus.
+
+[Bridge]
+Breakpoints finden ihren Rhythmus,
+Von mobil bis Breitbild-Screen.
+CodePen ist ein Prisma,
+Fragmente die glänzen.
+
+Git committet die Passion,
+Pull Requests zum Sieg.
+Deployment in sanftem Gang,
+Die Smoothness im Innern.
+
+[Outro]
+Er ist der Pixel-Operator,
+Oh, smooth Frontend-Flow.
+Styling-Träume, ein Schöpfer,
+Lass die Animationen zeigen.
+
+Er ist der Pixel-Operator...
+(Smooth... so smooth...) 
