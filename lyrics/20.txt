@@ -1,0 +1,75 @@
+[Verse 1]
+Whispers in the browser,
+Colors paint the scene,
+Cascading through the stylesheet,
+Code so crisp and clean.
+
+Dreams in responsive motion,
+Grid lines hold the frame,
+Hover states with devotion,
+Design that calls your name.
+
+[Pre-Chorus]
+Scrolling, flowing,
+Endless UX dreams.
+JavaScript in motion,
+Logic underneath the screen.
+
+[Chorus]
+He’s a pixel operator,
+Running through the DOM tonight.
+A visual navigator,
+Pixels dancing, oh so right.
+
+From React to animation,
+CSS love affair.
+He’s a frontend creator,
+Rendering smooth everywhere.
+
+[Verse 2]
+Debugging through the shadows,
+Console shows no fear.
+Variables in harmony,
+Functions crystal clear.
+
+Loading fast, no waiting,
+Transitions light as air.
+User clicks, elating,
+His styling’s always rare.
+
+[Pre-Chorus]
+Fluid, glowing,
+Every viewport shines.
+Flexbox like a river,
+Aligning hearts and lines.
+
+[Chorus]
+He’s a pixel operator,
+Running through the DOM tonight.
+A visual navigator,
+Pixels dancing, oh so right.
+
+From React to animation,
+CSS love affair.
+He’s a frontend creator,
+Rendering smooth everywhere.
+
+[Bridge]
+Breakpoints find their rhythm,
+From mobile to wide screen.
+Code pen, it’s a prism,
+Fragments that gleam.
+
+Git commits the passion,
+Pull requests to win.
+Deployment in slow fashion,
+The smoothness within.
+
+[Outro]
+He’s a pixel operator,
+Oh, smooth frontend flow.
+Styling dreams, a creator,
+Let the animations show.
+
+He’s a pixel operator…
+(Smooth... so smooth...)
