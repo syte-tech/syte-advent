@@ -10,7 +10,14 @@
     <div class="page-container">
         <div class="calendar-container" id="calendar"></div>
         <div class="lyrics-panel">
-            <div class="lyrics-title">Lyrics</div>
+            <div class="lyrics-header">
+                <div class="lyrics-title">Lyrics</div>
+                <div class="language-selector">
+                    <button class="lang-button" data-lang="original">Original: <span id="originalLang">--</span></button>
+                    <button class="lang-button" data-lang="en">EN</button>
+                    <button class="lang-button" data-lang="de">DE</button>
+                </div>
+            </div>
             <div class="lyrics-content" id="lyricsContent">
                 Select a song to view lyrics
             </div>
@@ -122,15 +129,36 @@
                 progressBar.style.width = `${progress}%`;
             }
 
+            let currentLang = 'original';
+
             async function updateLyrics(day) {
                 const lyricsContent = document.getElementById('lyricsContent');
+                const originalLangSpan = document.getElementById('originalLang');
+                
                 try {
-                    const response = await fetch(`lyrics/${day}.txt`);
+                    // Update original language display
+                    const songLanguage = songs[day]?.language || '--';
+                    originalLangSpan.textContent = songLanguage.toUpperCase();
+                    
+                    // Determine which lyrics file to load
+                    let path;
+                    if (currentLang === 'original' || currentLang === songLanguage) {
+                        path = `lyrics/${day}.txt`;
+                    } else {
+                        path = `translations/${currentLang}/${day}.txt`;
+                    }
+                    
+                    const response = await fetch(path);
                     if (!response.ok) {
                         throw new Error('Lyrics not found');
                     }
                     const text = await response.text();
                     lyricsContent.textContent = text || "No lyrics available for this song";
+                    
+                    // Update active language button
+                    document.querySelectorAll('.lang-button').forEach(btn => {
+                        btn.classList.toggle('active', btn.dataset.lang === currentLang);
+                    });
                 } catch (error) {
                     console.error('Error loading lyrics:', error);
                     lyricsContent.textContent = "No lyrics available for this song";
@@ -259,6 +287,16 @@
                 if (currentDay < 24 && (currentDay + 1) <= currentDate) {  // Check if next day is not in the future
                     playSong(currentDay + 1);
                 }
+            });
+
+            // Add language button event listeners
+            document.querySelectorAll('.lang-button').forEach(button => {
+                button.addEventListener('click', async () => {
+                    currentLang = button.dataset.lang;
+                    if (currentDay) {
+                        await updateLyrics(currentDay);
+                    }
+                });
             });
 
             // Create 24 day boxes

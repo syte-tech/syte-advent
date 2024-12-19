@@ -1,0 +1,52 @@
+[Intro]
+Prozessor, Grafikkarte, Schnittstelle, wir programmieren's hoch hinaus.
+Datentransfer, Dateien, Internet der Dinge, Tech-Team hier, das ist unser Haus.
+
+[Strophe 1]
+Wir arbeiten mit KI, maschinellem Lernen, Sprachverarbeitung,
+Debuggen durch die Nacht, schreiben sauberes MVP.
+Kontinuierliche Integration, Bereitstellung im Flug,
+Von Datenbank bis JSON, die Daten stimmen gut.
+
+Webskript, Auszeichnung, Stilvorlagen fließen,
+Im Stack mit Docker, lassen wir es sprießen.
+Virtuelle, erweiterte, gemischte Realität in Sicht,
+Das Tech-Team hat die Vision, Zukunft scheint so licht.
+
+[Refrain]
+Wir sind die Besten der IT-Szene,
+Von Schnittstellen bis Nutzererfahrung, halten's reine.
+Mit Software, Plattform und DevOps-Kraft,
+Tech-Team an der Spitze, niemals erschlafft!
+
+[Strophe 2]
+Leistungskennzahlen, Ziele ausgerichtet fein,
+Mit Scrum und Kanban optimieren wir die Zeit.
+Schnittstellen verbinden jeden Punkt,
+Cloud-native Apps, wir skalieren bunt.
+
+Von AWS bis Azure orchestrieren wir,
+Kubernetes-Cluster halten Workflows hier.
+Große Datenströme mit Spark und Kafka klar,
+Machen Magie real, hakuna matata!
+
+[Bridge]
+Bit für Bit, Byte für Byte,
+Von IoT bis Blockchain, wir zünden's an.
+Verschlüsselung ist unser Mantra klar,
+Sichern den Erfolg, das ist doch wunderbar.
+
+Oberfläche, Erfahrung, Nutzer lächeln mild,
+Mit jedem Commit sind wir's allemal wert.
+Qualität und Tests, grüne Lichter an,
+Das Tech-Team liefert, Strich für Strich voran!
+
+[Outro]
+KI, ML und das IoT,
+Wir bauen die Zukunft, wart' ab und seh'.
+Technik lenkt die Welt, das ist kein Scherz,
+Mit dem Team bei Syte erreichen wir das Herz.
+
+[Ausklang]
+Prozessor, Grafikkarte, Schnittstelle...
+Tech-Träume schweben hoch. 
