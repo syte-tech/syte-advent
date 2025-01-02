@@ -96,6 +96,7 @@
             let currentDay = null;
             // Get today's date
             const today = new Date();
+            const currentMonth = today.getMonth(); // 0 = January, 11 = December
             const currentDate = today.getDate();
             
             // Load favorites from localStorage
@@ -304,14 +305,22 @@
                 const dayBox = document.createElement('div');
                 dayBox.className = 'day-box';
                 
+                // Determine if the song is available based on the month
+                let isAvailable = false;
+                if (currentMonth >= 0 && currentMonth <= 10) { // January to October
+                    isAvailable = true; // All songs available
+                } else if (currentMonth === 11) { // December
+                    isAvailable = (i <= currentDate); // Only available if the day has come
+                }
+
                 // Check if this day is in the future
                 const isInFuture = i > currentDate;
-                if (isInFuture) {
+                if (isInFuture && currentMonth === 11) {
                     dayBox.classList.add('future-day');
                 }
-                
+
                 // Add current day indicator
-                if (today.getMonth() === 11 && today.getDate() === i) {
+                if (currentMonth === 11 && currentDate === i) {
                     dayBox.classList.add('current-day');
                 }
 
@@ -338,15 +347,17 @@
                     dayBox.appendChild(favoriteIndicator);
                 }
                 
-                dayBox.appendChild(img);
-                dayBox.appendChild(dayNumber);
-                
+                // If the song is not available, disable the click event
                 dayBox.addEventListener('click', async () => {
-                    // Only allow clicking if it's not a future day
-                    if (!isInFuture) {
+                    if (isAvailable) {
                         await playSong(i);
+                    } else {
+                        alert("Dieses Lied ist derzeit nicht verfügbar.");
                     }
                 });
+
+                dayBox.appendChild(img);
+                dayBox.appendChild(dayNumber);
                 
                 calendar.appendChild(dayBox);
             }
