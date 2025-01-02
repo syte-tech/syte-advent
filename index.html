@@ -307,7 +307,7 @@
                 
                 // Determine if the song is available based on the month
                 let isAvailable = false;
-                if (currentMonth >= 0 && currentMonth <= 10) { // January to October
+                if (currentMonth >= 0 && currentMonth <= 9) { // January to October
                     isAvailable = true; // All songs available
                 } else if (currentMonth === 11) { // December
                     isAvailable = (i <= currentDate); // Only available if the day has come
