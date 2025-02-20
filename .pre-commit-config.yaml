@@ -1,0 +1,44 @@
+default_stages: [pre-commit]
+
+default_language_version:
+  python: python3.12
+
+repos:
+
+# Git
+- repo: https://github.com/compilerla/conventional-pre-commit
+  rev: v4.0.0
+  hooks:
+  - id: conventional-pre-commit
+    stages: [commit-msg]
+    args: [--strict, chore, docs, feat, fix, format, refactor, test, update]
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v5.0.0
+  hooks:
+  - id: no-commit-to-branch
+    args: ['--pattern', '^(?!(chore|docs|feat|fix|format|refactor|test|update)/(\w+)*).*']
+
+# CI stuff
+- repo: https://gitlab.com/vojko.pribudic.foss/pre-commit-update
+  rev: v0.6.1
+  hooks:
+  - id: pre-commit-update
+    files: .pre-commit-config.yaml
+- repo: https://github.com/sirosen/check-jsonschema
+  rev: 0.31.2
+  hooks:
+  - id: check-github-actions
+  - id: check-github-workflows
+
+# Data files
+- repo: https://github.com/pre-commit/pre-commit-hooks
+  rev: v5.0.0
+  hooks:
+  - id: pretty-format-json
+    args: [--autofix, --indent=2, --no-ensure-ascii, --no-sort-keys]
+    exclude: ".*ipynb|dwh_checks/.*"
+- repo: https://github.com/macisamuele/language-formatters-pre-commit-hooks
+  rev: v2.14.0
+  hooks:
+  - id: pretty-format-yaml
+    args: [--autofix, --indent, '2', --preserve-quotes, --line-width, "120"]
