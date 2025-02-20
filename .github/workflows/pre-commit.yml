@@ -19,18 +19,12 @@ jobs:
       with:
         fetch-depth: 2
     - uses: actions/setup-python@v5
-    - name: set PY
-      run: echo "PY=$(python -VV | sha256sum | cut -d' ' -f1)" >> $GITHUB_ENV
-    - uses: actions/cache@v3
-      with:
-        path: ~/.cache/pre-commit
-        key: pre-commit|${{ env.PY }}|${{ hashFiles('.pre-commit-config.yaml') }}
     - uses: pre-commit/action@v3.0.1
       name: Formatting Check
       id: format
       continue-on-error: true
       with:
-        extra_args: --hook-stage commit --from-ref HEAD~ --to-ref HEAD
+        extra_args: --hook-stage pre-commit --from-ref HEAD~ --to-ref HEAD
     - uses: pre-commit/action@v3.0.1
       name: Linting Check (may fail)
       id: lint
