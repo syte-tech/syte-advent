@@ -288,6 +288,48 @@ body {
     fill: #fff;
 }
 
+.download-button {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 2;
+}
+
+.day-box:hover .download-button {
+    opacity: 1;
+}
+
+.download-button:hover {
+    background-color: rgba(255, 85, 0, 0.9);
+    transform: scale(1.1);
+}
+
+.download-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+.download-button .spinner {
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
 .lyrics-header {
     display: flex;
     justify-content: space-between;
