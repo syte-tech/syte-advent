@@ -37,15 +37,14 @@ jobs:
         with open('reviewer_data.json') as f:
             groups = json.load(f)
         print(f"Checking if {actor_name} is a reviewer for {repo_name}")
-        for name, definitions in groups.items():
-            print(f"Checking group {name}")
-            if repo_name in definitions["repos"]:
-                if actor_name in definitions["reviewers"]:
-                    print(f"Found reviewer {actor_name} in group {name} for repo {repo_name}")
-                    exit(0)
-            else:
-                print(f"Repo {repo_name} not found in group {group[0]}")
-                exit(1)
+        for group_name, definitions in groups.items():
+            print(f"Checking group {group_name}")
+            if not repo_name in definitions["repos"]:
+                print(f"Repo {repo_name} not found in group {group_name}")
+                continue
+            if actor_name in definitions["reviewers"]:
+                print(f"Found reviewer {actor_name} in group {group_name} for repo {repo_name}")
+                exit(0)
         else:
             print(f"No reviewer found for {repo_name} and {actor_name}")
             exit(1)
