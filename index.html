@@ -80,7 +80,7 @@
                 songs = await response.json();
             } catch (error) {
                 console.error('Error loading songs:', error);
-                songs = {}; // Fallback to empty object if loading fails
+                songs = {};
             }
 
             const calendar = document.getElementById('calendar');
