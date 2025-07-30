@@ -1,0 +1,52 @@
+name: check_reviewer.yml
+
+on:
+  pull_request_review:
+
+jobs:
+  check-reviewer:
+    runs-on: ubuntu-24.04
+    steps:
+    - if: ${{ (github.event.review.state != 'approved') }}
+      name: Fail if review is not approved
+      run: exit 1
+    - uses: actions/setup-python@v4
+    - name: Write reviewer data
+      env:
+        REPO_NAME: ${{ github.event.repository.name }}
+        ACTOR_NAME: ${{ github.actor }}
+      run: |
+        cat <<EOF > reviewer_data.json
+        {
+          "advent": {
+            "repos": ["syte-advent"],
+            "reviewers": ["quassy", "JamesJoyce97"]
+          }
+        }
+        EOF
+    - name: Check if the PR has a reviewer
+      env:
+        REPO_NAME: ${{ github.event.repository.name }}
+        ACTOR_NAME: ${{ github.actor }}
+      run: |
+        python <<EOF
+        import json
+        import os
+        repo_name = os.environ.get("REPO_NAME")
+        actor_name = os.environ.get("ACTOR_NAME")
+        with open('reviewer_data.json') as f:
+            groups = json.load(f)
+        print(f"Checking if {actor_name} is a reviewer for {repo_name}")
+        for name, definitions in groups.items():
+            print(f"Checking group {name}")
+            if repo_name in definitions["repos"]:
+                if actor_name in definitions["reviewers"]:
+                    print(f"Found reviewer {actor_name} in group {name} for repo {repo_name}")
+                    exit(0)
+            else:
+                print(f"Repo {repo_name} not found in group {group[0]}")
+                exit(1)
+        else:
+            print(f"No reviewer found for {repo_name} and {actor_name}")
+            exit(1)
+        EOF
