@@ -1,10 +1,10 @@
-name: Is PR review actor data or Sven?
+name: pull-request-review-check
 
 on:
   pull_request_review:
 
 jobs:
-  deploy-to-prod:
+  pull-request-review-check:
     runs-on: ubuntu-24.04
     steps:
     - name: Check if Actor is a Member of one of the teams
