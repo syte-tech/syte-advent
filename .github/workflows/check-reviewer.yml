@@ -1,15 +1,13 @@
-name: check_reviewer.yml
+name: Check if reviewer is assigned
 
 on:
   pull_request_review:
 
 jobs:
   check-reviewer:
+    if: github.event.review.state == 'approved'
     runs-on: ubuntu-24.04
     steps:
-    - if: ${{ (github.event.review.state != 'approved') }}
-      name: Fail if review is not approved
-      run: exit 1
     - uses: actions/setup-python@v4
     - name: Write reviewer data
       env:
@@ -20,7 +18,7 @@ jobs:
         {
           "advent": {
             "repos": ["syte-advent"],
-            "reviewers": ["quassy", "JamesJoyce97"]
+            "reviewers": ["quassy", "jamesjoyce92", "MarcusCramer91"]
           }
         }
         EOF
@@ -46,6 +44,6 @@ jobs:
                 print(f"Found reviewer {actor_name} in group {group_name} for repo {repo_name}")
                 exit(0)
         else:
-            print(f"No reviewer found for {repo_name} and {actor_name}")
+            print(f"{actor_name} is not a reviewer for {repo_name}")
             exit(1)
         EOF
